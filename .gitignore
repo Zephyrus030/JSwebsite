@@ -1,0 +1,9 @@
+@"
+Website/node_modules/
+Website/dist/
+Website/__pycache__/
+Website/*.py[cod]
+Website/.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+"@ | Out-File -FilePath .gitignore -Encoding utf8
