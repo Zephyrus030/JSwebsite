@@ -1,0 +1,83 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--card-min)), 1fr));
+  gap: var(--grid-gap);
+}
+
+.card {
+  min-width: 0;
+}
+
+.media {
+  overflow: hidden;
+  background: #ece9e3;
+}
+
+.portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.square {
+  aspect-ratio: 1;
+}
+
+.landscape {
+  aspect-ratio: 4 / 3;
+}
+
+.wide {
+  aspect-ratio: 16 / 9;
+}
+
+.media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--ease);
+}
+
+.link {
+  display: block;
+}
+
+.link:hover img,
+.link:focus-visible img {
+  transform: scale(1.02);
+}
+
+.title {
+  margin: 1rem 0 0;
+  color: var(--ink);
+  font-size: var(--card-title-size, 1rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.meta {
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.text {
+  margin: 0.35rem 0 0;
+  color: var(--body);
+  font-size: var(--card-body-size, 0.875rem);
+  line-height: 1.55;
+}
+
+@media (min-width: 48rem) {
+  .reference {
+    grid-template-columns: repeat(var(--reference-columns), minmax(0, 1fr));
+  }
+
+  .reference .card {
+    grid-column: span var(--reference-span);
+  }
+}

@@ -1,3 +1,7 @@
+import BrandPage from '../../Shared/components/BrandPage';
+import { interich } from './brandData';
+import styles from './InterichPage.module.css';
+
 export default function InterichPage() {
-  return <h1>INTERICH</h1>;
+  return <div className={styles.page}><BrandPage brand={interich} /></div>;
 }

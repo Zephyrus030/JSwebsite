@@ -1,0 +1,17 @@
+.page {
+  --brand-pace: 1;
+}
+
+.hero {
+  --hero-content-offset: clamp(4.5rem, 20.6vw, 25rem);
+  --hero-content-max: 32rem;
+  --hero-headline-size: clamp(2.75rem, 4.4vw, 4.5rem);
+}
+
+@media (max-width: 47.99rem) {
+  .hero {
+    --hero-content-offset: var(--page-gutter);
+    --hero-content-max: 24rem;
+    --hero-headline-size: clamp(2.5rem, 11vw, 3.25rem);
+  }
+}

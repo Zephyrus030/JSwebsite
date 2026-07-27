@@ -1,0 +1,61 @@
+const asset = (name) => `/assets/${name}`;
+
+export const sProject = {
+  name: 'S Project',
+  slug: 's-project',
+  layout: {
+    bodySize: '0.9rem',
+    sectionMax: '74rem',
+    sectionSpace: 'clamp(4rem, 8vw, 7rem)',
+    statementMax: '66rem',
+    statementLead: '1.08fr',
+    statementDetail: '0.92fr',
+  },
+  hero: {
+    image: asset('s-project-hero.webp'),
+    imageAlt: 'Contemporary S Project residence at dusk',
+    eyebrow: 'Residential building',
+    title: 'S Project',
+    text: 'Homes designed for the way life is lived.',
+    headlineVariant: 's-project',
+    eyebrowPosition: 'after',
+    height: 'clamp(31rem, 54vw, 43rem)',
+    imagePosition: 'center',
+    layout: 'split',
+    wordmark: { variant: 's-project', construction: 's-serif' },
+  },
+  statement: {
+    lead: 'S Project creates considered residential homes across Melbourne, bringing together design, construction and enduring liveability.',
+    detail: 'Every home is a collaboration. We listen closely, design with intention and build with care — creating spaces that feel beautifully resolved and made to last.',
+    variant: 'split',
+  },
+  sections: [
+    {
+      id: 's-project-collections',
+      type: 'collections',
+      eyebrow: 'Residential work',
+      title: 'A considered way to build.',
+      minCardWidth: '15rem',
+      referenceColumns: 3,
+      referenceCount: 3,
+      items: [
+        { title: 'Custom Homes', text: 'Bespoke homes designed around your lifestyle, site and vision.', src: asset('s-project-custom-homes.webp'), alt: 'Entry to a custom contemporary home', ratio: 'portrait' },
+        { title: 'Design & Build', text: 'A seamless end-to-end service that brings clarity and craft to every stage.', src: asset('s-project-design-build.webp'), alt: 'Warm stone kitchen interior', ratio: 'portrait' },
+        { title: 'Melbourne Projects', text: 'Thoughtfully crafted homes across Melbourne’s most sought-after neighbourhoods.', src: asset('s-project-melbourne-projects.webp'), alt: 'Living room opening to a courtyard', ratio: 'portrait' },
+      ],
+    },
+    {
+      id: 's-project-feature',
+      type: 'feature',
+      eyebrow: 'Selected residential work',
+      title: 'Spaces for a life well lived.',
+      text: 'Architecture, interiors and landscape brought together with a single considered point of view.',
+      image: asset('s-project-residential-work.webp'),
+      alt: 'Residence overlooking a pool',
+      ratio: 'panorama',
+      variant: 'full-width-media',
+      layout: { maxWidth: '74rem' },
+    },
+  ],
+  cta: { href: 'https://sproject.com.au/', note: 'Independent website — launching 2026' },
+};

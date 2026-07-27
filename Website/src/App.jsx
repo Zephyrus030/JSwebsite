@@ -1,4 +1,5 @@
-import { Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import AboutPage from '../About/AboutPage';
 import FluxPage from '../Brands/FLUX/FluxPage';
 import InterichPage from '../Brands/INTERICH/InterichPage';
@@ -8,21 +9,34 @@ import ContactPage from '../Contact/ContactPage';
 import ExperiencePage from '../Experience/ExperiencePage';
 import Homepage from '../Homepage/Homepage';
 import NewsPage from '../News/NewsPage';
-import NotFoundPage from '../Shared/NotFoundPage';
+import NotFoundPage from '../NotFound/NotFoundPage';
+
+export function RouteFocus() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    document.querySelector('[data-page-heading]')?.focus();
+  }, [pathname]);
+
+  return null;
+}
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/brands/s-project" element={<SProjectPage />} />
-      <Route path="/brands/interich" element={<InterichPage />} />
-      <Route path="/brands/ioak" element={<IoakPage />} />
-      <Route path="/brands/flux" element={<FluxPage />} />
-      <Route path="/experience" element={<ExperiencePage />} />
-      <Route path="/news" element={<NewsPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <>
+      <RouteFocus />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/brands/s-project" element={<SProjectPage />} />
+        <Route path="/brands/interich" element={<InterichPage />} />
+        <Route path="/brands/ioak" element={<IoakPage />} />
+        <Route path="/brands/flux" element={<FluxPage />} />
+        <Route path="/experience" element={<ExperiencePage />} />
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }

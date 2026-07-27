@@ -1,0 +1,20 @@
+:root {
+  --canvas: #f7f6f2;
+  --surface: #ffffff;
+  --ink: #181817;
+  --body: #55534f;
+  --muted: #85817a;
+  --border: #d8d4cc;
+  --inverse-surface: #181817;
+  --inverse-text: #f7f6f2;
+  --font-sans: Manrope, "Helvetica Neue", Arial, sans-serif;
+  --text-hero: clamp(3rem, 5.4vw, 4.5rem);
+  --text-page-title: clamp(2.5rem, 4vw, 3.5rem);
+  --text-section-title: clamp(1.75rem, 2.6vw, 2.25rem);
+  --text-body: clamp(0.9375rem, 1.2vw, 1.0625rem);
+  --page-gutter: clamp(1.5rem, 5vw, 4.5rem);
+  --content-max: 90rem;
+  --section-space: clamp(3rem, 10vw, 9rem);
+  --grid-gap: clamp(1rem, 2vw, 1.75rem);
+  --ease: 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}

@@ -1,0 +1,67 @@
+.panel {
+  display: grid;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.details {
+  display: grid;
+  gap: 1.75rem;
+  padding: clamp(2rem, 4vw, 3.5rem) var(--page-gutter);
+}
+
+.details p {
+  margin: 0 0 0.8rem;
+  color: var(--muted);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.details span {
+  display: block;
+  color: var(--body);
+  font-size: 0.6875rem;
+  line-height: 1.65;
+}
+
+.panel figure {
+  min-height: 14rem;
+  margin: 0;
+  overflow: hidden;
+  background: #e9e9e1;
+}
+
+.panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.compact {
+  border-top: 0;
+}
+
+.compact figure {
+  min-height: clamp(17rem, 35vw, 25rem);
+}
+
+@media (min-width: 48rem) {
+  .panel {
+    grid-template-columns: minmax(0, 1fr) minmax(28rem, 1.2fr);
+  }
+
+  .details {
+    grid-template-columns: repeat(3, 1fr);
+    align-content: center;
+  }
+
+  .panel:not(.compact) figure {
+    min-height: 17rem;
+  }
+
+  .compact {
+    grid-template-columns: 1fr;
+  }
+}

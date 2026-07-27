@@ -1,3 +1,7 @@
+import BrandPage from '../../Shared/components/BrandPage';
+import { flux } from './brandData';
+import styles from './FluxPage.module.css';
+
 export default function FluxPage() {
-  return <h1>FLUX</h1>;
+  return <div className={styles.page}><BrandPage brand={flux} /></div>;
 }

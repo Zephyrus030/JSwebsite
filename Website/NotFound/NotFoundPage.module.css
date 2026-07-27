@@ -1,0 +1,44 @@
+.main {
+  display: grid;
+  min-height: 62vh;
+  place-items: center;
+  padding: var(--section-space) var(--page-gutter);
+  text-align: center;
+}
+
+.main section {
+  display: grid;
+  justify-items: center;
+}
+
+.main p,
+.main span,
+.main a {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.main p {
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+}
+
+.main h1 {
+  margin: 0;
+  color: var(--ink);
+  font-size: var(--text-page-title);
+  font-weight: 300;
+  letter-spacing: -0.055em;
+}
+
+.main > section > span {
+  margin-top: 1rem;
+  color: var(--body);
+}
+
+.main a {
+  margin-top: 2rem;
+  color: var(--ink);
+}

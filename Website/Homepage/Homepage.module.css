@@ -1,0 +1,238 @@
+.brands,
+.news {
+  width: min(100% - (var(--page-gutter) * 2), 90rem);
+  margin: clamp(3rem, 6vw, 6rem) auto;
+}
+
+.homeHero {
+  --hero-content-offset: clamp(4rem, 11vw, 10rem);
+  --text-hero: clamp(2.75rem, 4.5vw, 4rem);
+}
+
+.eyebrow,
+.opening,
+.newsDate,
+.cardAction,
+.textAction {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.brandGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+}
+
+.brandCard {
+  min-width: 0;
+  padding: 0 clamp(0.75rem, 1.7vw, 1.5rem);
+  border-left: 1px solid var(--border);
+}
+
+.brandCard:first-child {
+  border-left: 0;
+}
+
+.brandCard > a {
+  display: grid;
+  grid-template-rows: auto auto minmax(2.7rem, auto) auto auto;
+}
+
+.brandCard figure {
+  margin: 1.35rem 0 0;
+  overflow: hidden;
+  aspect-ratio: 1.86 / 1;
+  background: #e9e5de;
+}
+
+.brandCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--ease);
+}
+
+.brandCard a:hover img,
+.brandCard a:focus-visible img {
+  transform: scale(1.02);
+}
+
+.brandCard h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(0.75rem, 1.05vw, 0.95rem);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  transform: scaleX(0.95);
+  transform-origin: center;
+  text-align: center;
+}
+
+.brandSubtitle {
+  margin: 0.7rem 0 0;
+  color: var(--body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.brandCard p:not(.brandSubtitle) {
+  min-height: 2.7rem;
+  margin: 0.35rem 0 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.cardAction {
+  color: var(--ink);
+}
+
+.textAction {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: var(--ink);
+}
+
+.opening {
+  margin: 1rem 0 0;
+  color: var(--muted);
+}
+
+.news {
+  margin-bottom: 0;
+  padding-bottom: clamp(3rem, 5vw, 5rem);
+  border-bottom: 1px solid var(--border);
+}
+
+.news > h2 {
+  margin: 0 0 2rem;
+  color: var(--ink);
+  font-size: var(--text-section-title);
+  font-weight: 300;
+  text-align: center;
+}
+
+.newsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+}
+
+.newsCard a {
+  display: grid;
+  grid-template-columns: minmax(7rem, 45%) minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: start;
+}
+
+.newsCard {
+  min-width: 0;
+  padding-left: clamp(0.75rem, 1.4vw, 1.25rem);
+  border-left: 1px solid var(--border);
+}
+
+.newsCard:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.newsCard img {
+  width: 266px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 43 / 34;
+  object-fit: cover;
+}
+
+.newsDate {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.5625rem;
+}
+
+.newsCard h3 {
+  min-height: 2.05rem;
+  margin: 0.35rem 0 0.8rem;
+  color: var(--ink);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.homeFeature {
+  width: min(100% - (var(--page-gutter) * 2), 90rem);
+  margin: clamp(2rem, 4vw, 4rem) auto;
+  gap: clamp(3rem, 8vw, 7rem);
+}
+
+.homeReveal {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.homeFeature .splitContent {
+  padding: clamp(1.5rem, 5vw, 4rem) clamp(1rem, 2vw, 2rem) clamp(1.5rem, 5vw, 4rem) 0;
+}
+
+.homeFeature .splitFigure {
+  aspect-ratio: 2.2 / 1;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 48rem) {
+  .homeFeature {
+    grid-template-columns: minmax(19rem, 0.58fr) minmax(0, 1fr);
+  }
+
+  .brandCard figure {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 32rem) {
+  .homeHero {
+    --hero-content-offset: var(--page-gutter);
+  }
+  .brandGrid,
+  .newsGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .brandCard,
+  .brandCard:first-child,
+  .brandCard:last-child {
+    padding: 0;
+    border-left: 0;
+  }
+
+  .newsCard,
+  .newsCard:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .newsCard a {
+    grid-template-columns: 5rem minmax(0, 1fr);
+  }
+}

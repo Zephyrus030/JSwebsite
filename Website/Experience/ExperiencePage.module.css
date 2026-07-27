@@ -1,0 +1,251 @@
+.hero {
+  position: relative;
+  min-height: clamp(25rem, 40vw, 36rem);
+  overflow: hidden;
+  background: #d7d2c9;
+}
+
+.hero::after {
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 8%);
+  content: '';
+}
+
+.heroImage,
+.heroContent {
+  position: absolute;
+  inset: 0;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroContent {
+  z-index: 1;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  padding: var(--page-gutter);
+  color: var(--inverse-text);
+  text-align: center;
+}
+
+.heroContent h1 {
+  margin: 0;
+  font-size: clamp(2.75rem, 5.4vw, 4.5rem);
+  font-weight: 300;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.heroContent p {
+  margin: 0.8rem 0 2.8rem;
+  font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+  font-weight: 400;
+}
+
+.heroContent span,
+.eyebrow,
+.opening,
+.directionButton,
+.visit p {
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.heroContent span {
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid currentcolor;
+}
+
+.showroom,
+.location,
+.visit {
+  width: min(100% - (var(--page-gutter) * 2), 75rem);
+  margin: var(--section-space) auto;
+}
+
+.showroom {
+  margin-top: clamp(2rem, 5vw, 4.25rem);
+}
+
+.introduction :global(.splitFigure) {
+  aspect-ratio: auto;
+}
+
+.introduction :global(.splitFigure img) {
+  height: auto;
+}
+
+.eyebrow {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+.showroom > .eyebrow {
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.zoneGrid {
+  --card-title-size: 0.95rem;
+  --card-body-size: 0.8125rem;
+  --grid-gap: clamp(0.55rem, 1vw, 0.9rem);
+}
+
+.zoneGrid :global(article) {
+  text-align: center;
+}
+
+.zoneGrid :global(h3) {
+  max-width: 18ch;
+  margin-top: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+}
+
+.location figure {
+  margin: 0;
+  overflow: hidden;
+  background: #e9e5de;
+}
+
+.location img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.location h2,
+.visit h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.35rem, 2.15vw, 2rem);
+  font-weight: 300;
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+}
+
+.location {
+  display: grid;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.address h2 span {
+  display: block;
+}
+
+.address h2 span:last-child {
+  font-weight: 100;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+
+.opening {
+  margin: 1.5rem 0;
+  color: var(--muted);
+}
+
+.directionButton {
+  display: inline-flex;
+  gap: 1.5rem;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 0.85rem;
+  border: 1px solid var(--border);
+  color: var(--ink);
+  transition: color var(--ease), background var(--ease);
+}
+
+.directionButton:hover,
+.directionButton:focus-visible {
+  background: var(--ink);
+  color: var(--inverse-text);
+}
+
+.location figure {
+  aspect-ratio: 489 / 193;
+}
+
+.visit {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  background: #f1efeb;
+}
+
+.visit > div {
+  z-index: 1;
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.visit h2 {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.visit p {
+  margin: 0.8rem 0 0;
+  color: var(--body);
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+.visit img {
+  width: 100%;
+  min-height: 12rem;
+  height: 100%;
+  object-fit: cover;
+}
+
+.visit > a {
+  position: absolute;
+  inset: 0;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (min-width: 48rem) {
+  .location {
+    grid-template-columns: minmax(16rem, 0.75fr) minmax(22rem, 1.25fr);
+  }
+
+  .visit {
+    grid-template-columns: minmax(16rem, 0.75fr) minmax(22rem, 1.25fr);
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .hero {
+    min-height: 31rem;
+  }
+
+  .heroImage {
+    object-position: 58% center;
+  }
+
+  .showroom {
+    margin-top: 4.5rem;
+  }
+}

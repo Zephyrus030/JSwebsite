@@ -1,0 +1,126 @@
+.footer {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 2rem;
+  padding: clamp(3rem, 7vw, 6rem) var(--page-gutter) 1.75rem;
+  color: var(--inverse-text);
+  background: var(--inverse-surface);
+}
+
+.brandFooter {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  color: var(--ink);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.brandFooter .brand p + p {
+  color: var(--body);
+}
+
+.brandFooter small {
+  color: var(--muted);
+  border-top-color: var(--border);
+}
+
+.compactFooter {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  min-height: 6.5rem;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem var(--page-gutter);
+  color: var(--ink);
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.compactBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--ink);
+}
+
+.compactBrand span:first-child {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.7rem;
+  letter-spacing: -0.08em;
+  line-height: 0.8;
+}
+
+.compactBrand span:last-child,
+.compactNavigation a,
+.compactFooter small {
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.compactFooter small {
+  grid-column: auto;
+  padding: 0;
+  color: var(--muted);
+  border: 0;
+}
+
+.compactNavigation {
+  display: flex;
+  justify-content: flex-end;
+  gap: clamp(1rem, 3vw, 2.25rem);
+}
+
+.brand p,
+.address,
+.navigation {
+  margin: 0;
+}
+
+.brand p:first-child,
+.navigation a {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.brand p + p {
+  max-width: 21rem;
+  margin-top: 1rem;
+  color: color-mix(in srgb, var(--inverse-text) 72%, transparent);
+}
+
+.address,
+.navigation {
+  display: grid;
+  align-content: start;
+  gap: 0.5rem;
+  font-style: normal;
+}
+
+.footer small {
+  grid-column: 1 / -1;
+  padding-top: 2rem;
+  color: color-mix(in srgb, var(--inverse-text) 65%, transparent);
+  border-top: 1px solid color-mix(in srgb, var(--inverse-text) 22%, transparent);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 44rem) {
+  .footer {
+    grid-template-columns: 1fr;
+  }
+
+  .footer small {
+    grid-column: auto;
+  }
+
+  .compactFooter {
+    grid-template-columns: 1fr auto;
+  }
+
+  .compactFooter small {
+    display: none;
+  }
+}
