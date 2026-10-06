@@ -1,13 +1,18 @@
 :root {
-  --canvas: #f7f6f2;
+  --paper: #f7f5f0;
+  --tint: #efede8;
+  --canvas: var(--paper);
   --surface: #ffffff;
   --ink: #181817;
   --body: #55534f;
   --muted: #85817a;
+  --editorial-heading: hsl(29 50% 29%);
+  --editorial-body: hsl(29 50% 32%);
+  --editorial-muted: hsl(29 50% 35%);
   --border: #d8d4cc;
   --inverse-surface: #181817;
   --inverse-text: #f7f6f2;
-  --font-sans: Manrope, "Helvetica Neue", Arial, sans-serif;
+  --font-sans: "Libre Baskerville", Georgia, "Times New Roman", serif;
   --text-hero: clamp(3rem, 5.4vw, 4.5rem);
   --text-page-title: clamp(2.5rem, 4vw, 3.5rem);
   --text-section-title: clamp(1.75rem, 2.6vw, 2.25rem);

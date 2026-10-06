@@ -1,5 +1,6 @@
 .page {
   overflow: clip;
+  background: var(--brand-paper, var(--paper));
   font-size: var(--brand-body-size, var(--text-body));
   line-height: 1.65;
   --card-body-size: max(0.75rem, calc(var(--brand-body-size, 1rem) * 0.9));
@@ -9,8 +10,26 @@
 .statement,
 .section,
 .cta {
+  position: relative;
+  isolation: isolate;
   width: min(100% - (var(--page-gutter) * 2), var(--content-max));
-  margin: var(--brand-section-space, var(--section-space)) auto 0;
+  margin: 0 auto;
+  padding-top: var(--brand-section-space, var(--section-space));
+  padding-bottom: var(--brand-section-space, var(--section-space));
+}
+
+.statement::before,
+.section::before,
+.cta::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  background: var(--section-surface, transparent);
+  content: '';
+  transform: translateX(-50%);
 }
 
 .statement {
@@ -59,7 +78,7 @@
 }
 
 .copy {
-  max-width: 34rem;
+  max-width: var(--brand-copy-max, 34rem);
   margin-bottom: clamp(1.75rem, 4vw, 3rem);
 }
 
@@ -83,6 +102,8 @@
 
 .copy p {
   margin: 1rem 0 0;
+  font-size: var(--brand-copy-size, inherit);
+  line-height: 1.62;
 }
 
 .feature {
@@ -219,7 +240,7 @@
   grid-column: 2;
   width: 100%;
   margin: 0;
-  padding-bottom: 0;
+  padding: 0;
   justify-items: start;
   text-align: left;
 }
@@ -229,7 +250,16 @@
   text-align: center;
 }
 
-@media (min-width: 48rem) {
+.page[data-brand="flux"] .collections > .featureCta {
+  margin-top: 1rem;
+}
+
+.page[data-brand="flux"] .feature > .copy {
+  align-self: start;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+@container (min-width: 48rem) {
   .statement {
     grid-template-columns:
       minmax(0, var(--brand-statement-lead, 1.2fr))
@@ -285,8 +315,19 @@
 }
 
 .page[data-brand="interich"] {
-  --brand-heading-size: clamp(1.45rem, 2vw, 1.85rem);
+  --brand-heading-size: clamp(1.85rem, 3vw, 2.5rem);
   --brand-statement-size: clamp(1.35rem, 2vw, 1.75rem);
+}
+
+.page[data-brand="interich"] > .section,
+.page[data-brand="interich"] > .cta {
+  margin-top: 0;
+  padding-top: var(--brand-section-space, var(--section-space));
+  padding-bottom: var(--brand-section-space, var(--section-space));
+}
+
+.page[data-brand="interich"] [data-image-brightness-gradient="vertical"] .scrollCue {
+  margin-top: clamp(8rem, 15.2vw, 13.75rem);
 }
 
 .page[data-brand="ioak"],
@@ -295,7 +336,7 @@
   --brand-statement-size: clamp(1.4rem, 2.1vw, 1.85rem);
 }
 
-@media (max-width: 47.99rem) {
+@container (max-width: 47.99rem) {
   .referenceSwatches {
     grid-template-columns: 1fr;
   }
@@ -323,5 +364,9 @@
     margin-top: -0.5rem;
     padding-bottom: 0;
     text-align: center;
+  }
+
+  .page[data-brand="flux"] .collections > .featureCta {
+    margin-top: 1.5rem;
   }
 }

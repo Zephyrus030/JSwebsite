@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { brandNavigation, primaryNavigation } from '../data/navigation';
 import styles from './SiteHeader.module.css';
 
@@ -88,12 +88,15 @@ export default function SiteHeader() {
       role="banner"
     >
       <Link className={styles.logo} to="/" aria-label="JS Building Group home">
-        <span aria-hidden="true" className={styles.logoMonogram}>JS</span>
-        <span className={styles.logoType}>BUILDING GROUP</span>
+        <img
+          alt="JS Building Group"
+          className={styles.logoImage}
+          src="/assets/js-building-group-logo.png"
+        />
       </Link>
 
       <nav className={styles.desktopNav} aria-label="Primary navigation">
-        <Link onClick={() => setBrandsOpen(false)} to="/about">About</Link>
+        <NavLink className={styles.navItem} onClick={() => setBrandsOpen(false)} to="/about">About</NavLink>
         <div
           className={styles.brandGroup}
           onMouseEnter={() => setBrandsOpen(true)}
@@ -111,27 +114,27 @@ export default function SiteHeader() {
           <button
             aria-controls="brands-menu"
             aria-expanded={brandsOpen}
-            className={styles.navButton}
+            className={`${styles.navButton} ${styles.navItem}`}
             onClick={() => setBrandsOpen(true)}
             ref={brandsTriggerRef}
             type="button"
           >
-            OUR BRANDS
+            Our Brands
           </button>
           {brandsOpen && (
             <div className={styles.brandsMenu} id="brands-menu">
               {brandNavigation.map((item) => (
-                <Link key={item.href} onClick={() => setBrandsOpen(false)} to={item.href}>
+                <NavLink className={styles.navItem} key={item.href} onClick={() => setBrandsOpen(false)} to={item.href}>
                   {item.label}
-                </Link>
+                </NavLink>
               ))}
             </div>
           )}
         </div>
         {primaryNavigation.slice(1).map((item) => (
-          <Link key={item.href} onClick={() => setBrandsOpen(false)} to={item.href}>
+          <NavLink className={styles.navItem} key={item.href} onClick={() => setBrandsOpen(false)} to={item.href}>
             {item.label}
-          </Link>
+          </NavLink>
         ))}
       </nav>
 
@@ -160,25 +163,25 @@ export default function SiteHeader() {
           <nav aria-label="Mobile navigation">
             <button
               aria-expanded={mobileBrandsOpen}
-              className={styles.mobileBrandToggle}
+              className={`${styles.mobileBrandToggle} ${styles.navItem}`}
               onClick={() => setMobileBrandsOpen((open) => !open)}
               type="button"
             >
-              OUR BRANDS
+              Our Brands
             </button>
             {mobileBrandsOpen && (
               <div className={styles.mobileBrandLinks}>
                 {brandNavigation.map((item) => (
-                  <Link key={item.href} onClick={() => closeMobileMenu()} to={item.href}>
+                  <NavLink className={styles.navItem} key={item.href} onClick={() => closeMobileMenu()} to={item.href}>
                     {item.label}
-                  </Link>
+                  </NavLink>
                 ))}
               </div>
             )}
             {primaryNavigation.map((item) => (
-              <Link key={item.href} onClick={() => closeMobileMenu()} to={item.href}>
+              <NavLink className={styles.navItem} key={item.href} onClick={() => closeMobileMenu()} to={item.href}>
                 {item.label}
-              </Link>
+              </NavLink>
             ))}
           </nav>
         </div>

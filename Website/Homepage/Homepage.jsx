@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Hero from '../Shared/components/Hero';
 import { SectionIntro, SplitFeature } from '../Shared/components/Editorial';
@@ -17,20 +16,6 @@ function TextAction({ to, children = 'Learn more' }) {
 }
 
 export default function Homepage() {
-  useEffect(() => {
-    const onWheel = (event) => {
-      if (event.deltaY <= 0 || window.scrollY > 12) return;
-      const heroElement = document.querySelector('[data-hero-layout="full-bleed"]');
-      const nextSection = heroElement?.nextElementSibling;
-      if (!nextSection) return;
-      event.preventDefault();
-      window.scrollTo({ top: nextSection.offsetTop, behavior: 'smooth' });
-    };
-
-    window.addEventListener('wheel', onWheel, { passive: false });
-    return () => window.removeEventListener('wheel', onWheel);
-  }, []);
-
   return (
     <>
       <SiteHeader />
@@ -38,13 +23,14 @@ export default function Homepage() {
         <Hero
           {...hero}
           className={styles.homeHero}
-          height="calc(100svh - 4.5rem)"
+          height="calc(100svh - 4rem)"
           layout="full-bleed"
+          scrollOnWheel
         />
 
-        <Reveal className={styles.homeReveal}>
+        <Reveal className={styles.homeReveal} surface="paper">
           <SplitFeature
-            className={styles.homeFeature}
+            className={`${styles.homeFeature} ${styles.aboutFeature}`}
             image={about.image}
             imageAlt={about.imageAlt}
           >
@@ -55,18 +41,18 @@ export default function Homepage() {
           </SplitFeature>
         </Reveal>
 
-        <section className={styles.brands} aria-labelledby="brands-title">
-          <p className={styles.eyebrow}>Our brands</p>
+        <section className={styles.brands} aria-labelledby="brands-title" data-reveal-group="true" data-surface="tint">
+          <p className={styles.eyebrow} data-reveal-item="text">Our brands</p>
           <h2 className={styles.visuallyHidden} id="brands-title">Our brands</h2>
           <div className={styles.brandGrid}>
-            {brands.map((brand) => (
-              <article className={styles.brandCard} key={brand.title}>
+            {brands.map((brand, index) => (
+              <article className={styles.brandCard} data-reveal-item="card" key={brand.title} style={{ '--reveal-delay': `${index * 45}ms` }}>
                 <Link to={brand.href}>
                   <h3>{brand.title}</h3>
                   <p className={styles.brandSubtitle}>{brand.subtitle}</p>
                   <p>{brand.text}</p>
-                  <span className={styles.cardAction}>Visit website -&gt;</span>
-                  <figure>
+                  <span className={styles.cardAction}>DISCOVER MORE <span aria-hidden="true">-&gt;</span></span>
+                  <figure className={styles.brandImage}>
                     <img alt={brand.alt} loading="lazy" src={brand.src} />
                   </figure>
                 </Link>
@@ -75,27 +61,27 @@ export default function Homepage() {
           </div>
         </section>
 
-        <section aria-label="578 Experience">
-          <h2 className={styles.visuallyHidden}>578 Experience</h2>
+        <section aria-label="578 INTERIORS" className={styles.experienceBand} data-surface="paper">
+          <h2 className={styles.visuallyHidden}>578 INTERIORS</h2>
           <SplitFeature
-            className={styles.homeFeature}
+            className={`${styles.homeFeature} ${styles.experienceFeature}`}
             image={experience.image}
             imageAlt={experience.imageAlt}
           >
-            <SectionIntro eyebrow="578 Experience" title={experience.title}>
+            <SectionIntro eyebrow="578 INTERIORS" title={experience.title}>
               <p>{experience.text}</p>
               <p className={styles.opening}>Opening late 2026</p>
             </SectionIntro>
-            <TextAction to={experience.href} />
+            <TextAction to={experience.href}>DISCOVER 578 INTERIORS</TextAction>
           </SplitFeature>
         </section>
 
-        <section className={styles.news} aria-labelledby="news-title">
-          <p className={styles.eyebrow}>News</p>
+        <section className={styles.news} aria-labelledby="news-title" data-reveal-group="true" data-surface="tint">
+          <p className={styles.eyebrow} data-reveal-item="text">News</p>
           <h2 className={styles.visuallyHidden} id="news-title">News</h2>
           <div className={styles.newsGrid}>
-            {news.map((item) => (
-              <article className={styles.newsCard} key={item.title}>
+            {news.map((item, index) => (
+              <article className={styles.newsCard} data-reveal-item="card" key={item.title} style={{ '--reveal-delay': `${index * 45}ms` }}>
                 <Link to={item.href}>
                   <img
                     alt={item.alt}
@@ -105,7 +91,7 @@ export default function Homepage() {
                     width="86"
                   />
                   <div>
-                    <p className={styles.newsDate}>{item.date}</p>
+                    {item.date && <p className={styles.newsDate}>{item.date}</p>}
                     <h3>{item.title}</h3>
                     <span className={styles.cardAction}>Read more -&gt;</span>
                   </div>
@@ -115,7 +101,7 @@ export default function Homepage() {
           </div>
         </section>
       </main>
-      <SiteFooter variant="brand" />
+      <SiteFooter divided={false} variant="brand" />
     </>
   );
 }

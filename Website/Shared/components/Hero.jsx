@@ -25,7 +25,13 @@ const geometricWordmarks = {
 function Wordmark({ title, wordmark }) {
   if (!wordmark) {
     return (
-      <h1 aria-label={title.replace(/\n/g, ' ')} data-page-heading id="page-title" tabIndex="-1">
+      <h1
+        aria-label={title.replace(/\n/g, ' ')}
+        data-motion-step="wordmark"
+        data-page-heading
+        id="page-title"
+        tabIndex="-1"
+      >
         {title.split('\n').map((line) => <span aria-hidden="true" key={line}>{line}</span>)}
       </h1>
     );
@@ -35,13 +41,16 @@ function Wordmark({ title, wordmark }) {
     <h1
       aria-label={title}
       className={`${styles.wordmark} ${styles[wordmark.variant]}`}
+      data-motion-step="wordmark"
       data-page-heading
       data-wordmark-construction={wordmark.construction}
       data-wordmark={wordmark.variant}
       id="page-title"
       tabIndex="-1"
     >
-      {wordmark.variant === 's-project' ? (
+      {wordmark.image ? (
+        <img alt="" aria-hidden="true" className={styles.wordmarkImage} src={wordmark.image} />
+      ) : wordmark.variant === 's-project' ? (
         <>
           <span aria-hidden="true" className={styles.monogram}>S</span>
           <span aria-hidden="true" className={styles.wordmarkLabel}>PROJECT</span>
@@ -62,6 +71,7 @@ function Wordmark({ title, wordmark }) {
                 d={path}
                 fill="none"
                 key={path}
+                pathLength="1"
                 stroke="currentColor"
                 strokeLinecap="square"
                 strokeLinejoin="miter"
@@ -90,6 +100,17 @@ export default function Hero({
   eyebrowPosition = 'before',
   wordmark,
   headlineVariant,
+  imageBrightness = 0.6,
+  imageContrast = 0.95,
+  imageWarmth = 0.06,
+  imageHue = '0deg',
+  imageSaturation = 1.05,
+  imageBrightnessGradient = false,
+  imageBrightnessTop,
+  imageBrightnessBottom,
+  contentTranslateY,
+  contentMax,
+  heroTreatment,
   scrollOnWheel = false,
   className = '',
 }) {
@@ -99,9 +120,12 @@ export default function Hero({
     const nextSection = heroRef.current?.nextElementSibling;
     if (!nextSection) return;
 
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    const header = document.querySelector('[role="banner"]');
+    const headerBottom = header?.getBoundingClientRect().bottom || header?.offsetHeight || 0;
+    const heroBottom = heroRef.current.getBoundingClientRect().bottom + window.scrollY;
     window.scrollTo({
-      top: nextSection.offsetTop,
+      top: Math.max(0, heroBottom - headerBottom),
       behavior: reducedMotion ? 'auto' : 'smooth',
     });
   };
@@ -124,34 +148,57 @@ export default function Hero({
       className={`${styles.hero} ${styles[align] ?? ''} ${styles[layout] ?? ''} ${overlay ? styles.overlay : ''} ${className}`.trim()}
       aria-labelledby="page-title"
       data-hero-layout={layout}
+      data-image-brightness-gradient={imageBrightnessGradient || undefined}
+      data-hero-treatment={heroTreatment || undefined}
+      data-motion-sequence="hero"
       data-scroll-target={scrollOnWheel ? 'next-section' : undefined}
       ref={heroRef}
       style={{
         '--hero-height': height,
+        '--hero-content-max': contentMax,
         '--hero-image-position': imagePosition,
+        '--hero-image-brightness': imageBrightness,
+        '--hero-image-contrast': imageContrast,
+        '--hero-image-warmth': imageWarmth,
+        '--hero-image-hue': imageHue,
+        '--hero-image-saturation': imageSaturation,
+        '--hero-image-url': `url("${image}")`,
+        '--hero-image-brightness-top': imageBrightnessTop,
+        '--hero-image-brightness-bottom': imageBrightnessBottom,
+        '--hero-content-translate-y': contentTranslateY,
       }}
     >
-      <figure className={styles.figure}>
-        <img alt={imageAlt} className={styles.image} fetchPriority="high" src={image} />
+      <figure className={styles.figure} data-motion-step="image">
+        <img
+          alt={imageAlt}
+          className={styles.image}
+          fetchPriority="high"
+          src={image}
+        />
       </figure>
       <div className={styles.content}>
-        {eyebrow && eyebrowPosition === 'before' && <p className={styles.eyebrow}>{eyebrow}</p>}
+        {eyebrow && eyebrowPosition === 'before' && <p className={styles.eyebrow} data-motion-step="eyebrow">{eyebrow}</p>}
         <Wordmark title={title} wordmark={wordmark} />
-        {eyebrow && eyebrowPosition === 'after' && <p className={styles.eyebrow}>{eyebrow}</p>}
+        {eyebrow && eyebrowPosition === 'after' && <p className={styles.eyebrow} data-motion-step="eyebrow">{eyebrow}</p>}
         {text && (
           <p
             className={`${styles.text} ${headlineVariant ? styles.headline : ''} ${styles[`${headlineVariant}Headline`] ?? ''}`}
             data-headline-variant={headlineVariant}
+            data-motion-step="copy"
           >
             {text}
           </p>
         )}
         {scrollOnWheel ? (
-          <button className={styles.scrollCue} onClick={scrollToNextSection} type="button">
-            Scroll <span aria-hidden="true">↓</span>
+          <button className={styles.scrollCue} data-motion-step="scroll" onClick={scrollToNextSection} type="button">
+            <span className={styles.scrollBreath} data-scroll-breathe="true">
+              Scroll <span aria-hidden="true">↓</span>
+            </span>
           </button>
         ) : (
-          <span className={styles.scrollCue} aria-hidden="true">Scroll ↓</span>
+          <span className={styles.scrollCue} aria-hidden="true" data-motion-step="scroll">
+            <span className={styles.scrollBreath} data-scroll-breathe="true">Scroll ↓</span>
+          </span>
         )}
       </div>
     </section>

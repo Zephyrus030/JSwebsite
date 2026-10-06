@@ -1,3 +1,302 @@
 .page {
   --brand-pace: 1;
 }
+
+.page :global(main[data-brand="flux"] > [data-statement-variant="split"])
+  > figure {
+  aspect-ratio: 3 / 4;
+}
+
+.page :global([data-section-id="flux-collections"] > [data-layout="reference"]) article {
+  text-align: center;
+}
+
+.hero {
+  --hero-content-offset: calc(clamp(6rem, 10.5vw, 18rem) + 20px);
+  --hero-content-max: min(34vw, 56rem);
+}
+
+.hero :global([data-headline-variant="flux"]) {
+  color: #fff9f5;
+  letter-spacing: 0.04em;
+  opacity: 0.87;
+}
+
+.hero button {
+  color: #e9dfd3;
+  opacity: 0.71;
+}
+
+.page :global(main[data-brand="flux"] > [data-statement-variant="split"] > p) {
+  color: var(--body);
+  opacity: 1;
+}
+
+.page :global(#flux-collections-title) {
+  color: var(--ink);
+}
+
+.page :global([data-section-id="flux-collections"] > [data-section-copy] > p:first-child) {
+  color: var(--muted);
+}
+
+.page :global([data-section-id="flux-collections"] article h3) {
+  margin-top: 13px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.page :global([data-section-id="flux-collections"] article > p) {
+  width: min(342.88px, 100%);
+  margin: 6.6px auto 0;
+  color: var(--body);
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 1;
+}
+
+.page :global([data-section-id="flux-feature"] [data-section-copy] > p:first-child) {
+  margin-bottom: 15px;
+  color: var(--muted);
+  opacity: 1;
+}
+
+.page :global(#flux-feature-title) {
+  color: var(--ink);
+}
+
+.page :global([data-section-id="flux-feature"] [data-section-copy] > p:last-child) {
+  color: var(--body);
+  font-size: 16.12px;
+  opacity: 1;
+}
+
+.page :global([data-section-id="flux-collections"] [data-cta-placement="feature"] a) {
+  border: 1.3px solid #451e0c;
+  color: var(--muted);
+  opacity: 1;
+}
+
+.hero :global([data-wordmark="flux"] img) {
+  width: min(100%, clamp(23rem, 31vw, 56rem));
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.hero :global([data-wordmark="flux"]) {
+  width: 100% !important;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.hero :global([data-headline-variant="flux"]) {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@container (min-width: 48rem) {
+  .hero {
+    --flux-hero-axis: 375.29px;
+  }
+
+  .hero > div {
+    margin-top: 6px;
+    margin-left: -30.8px;
+  }
+
+  .hero :global([data-wordmark="flux"]) {
+    width: 254px !important;
+    max-width: none;
+    margin-right: 0;
+    margin-left: var(--flux-hero-axis);
+    transform: translateX(-50%);
+  }
+
+  .hero :global([data-wordmark="flux"] img) {
+    width: 254px;
+    height: auto;
+    max-width: none !important;
+    margin: 0;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .hero :global([data-headline-variant="flux"]) {
+    width: 331.05px;
+    box-sizing: content-box;
+    margin-top: 27.52px;
+    margin-right: 0;
+    margin-bottom: -4px;
+    margin-left: var(--flux-hero-axis);
+    padding-right: 27px;
+    padding-left: 27px;
+    font-size: 17.73px;
+    max-width: none;
+    text-align: center;
+    transform: translateX(-50%);
+  }
+
+  .hero button {
+    display: block;
+    margin: 145px 0 -106px var(--flux-hero-axis);
+    transform: translateX(-50%);
+  }
+
+  .hero button :global([data-scroll-breathe="true"]) {
+    margin-top: 20px;
+  }
+
+  .page :global(main[data-brand="flux"] > [data-statement-variant="split"]) {
+    width: auto;
+    max-width: none;
+    margin: 0 129.29px 0 116.29px;
+    padding: 42.47px 83px 42.47px 85px;
+  }
+
+  .page :global(main[data-brand="flux"] > [data-statement-variant="split"] > p) {
+    width: 428.6px;
+    min-height: 159.36px;
+    margin: 9px 4px 44px 34px;
+    font-size: 20.64px;
+    font-weight: 100;
+    letter-spacing: 0.012em;
+    line-height: 1.34;
+  }
+
+  .page :global(main[data-brand="flux"] > [data-statement-variant="split"] > figure) {
+    transform: translateX(-20px);
+  }
+
+  .page :global(main[data-brand="flux"] [data-section-id="flux-feature"] > [class*="copy"]) {
+    width: 306px;
+    margin: 87.74px -12px 0 8px;
+  }
+
+  .page :global([data-section-id="flux-collections"]) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 35.47px;
+    padding-bottom: 35.47px;
+  }
+
+  .page :global([data-section-id="flux-collections"] [data-ratio="portrait"]) {
+    height: 428.17px;
+    aspect-ratio: auto;
+    transform: scale(0.98);
+    transform-origin: center;
+  }
+
+  .page :global([data-section-id="flux-collections"] article:nth-child(2) img) {
+    object-position: 100% center;
+  }
+
+  .page :global([data-section-id="flux-collections"] > [data-layout="reference"]) {
+    margin-right: -15px;
+    margin-left: -15px;
+    gap: calc(var(--grid-gap) * 1.3 + 15px);
+  }
+
+  .page :global([data-section-id="flux-collections"] > [data-section-copy] > p:first-child) {
+    margin: -1px 0 15px;
+  }
+
+  .page :global(#flux-collections-title) {
+    margin-bottom: -22px;
+    font-size: 20.4px;
+  }
+
+  .page :global(main[data-brand="flux"] > [data-section-id="flux-collections"] > [data-cta-placement="feature"]) {
+    justify-items: center;
+    margin-top: 31px;
+    text-align: center;
+  }
+
+  .page :global([data-section-id="flux-feature"] [data-media-layout="flux-triptych"]) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "bath kitchen"
+      "detail detail";
+    width: 85.714%;
+    aspect-ratio: 4 / 3;
+    justify-self: center;
+    transform: translateX(-10px);
+  }
+
+  .page :global([data-section-id="flux-feature"] [data-media-layout="flux-triptych"])
+    [data-ratio] {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .page :global([data-section-id="flux-feature"] [data-media-layout="flux-triptych"])
+    [data-area="detail"] {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+}
+
+@container (max-width: 47.99rem) {
+  .hero {
+    --hero-content-offset: var(--page-gutter);
+    --hero-content-max: 24rem;
+  }
+
+  .hero :global([data-wordmark="flux"] img) {
+    width: min(100%, 22rem);
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .hero :global([data-headline-variant="flux"]) {
+    width: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: auto;
+  }
+
+  .page :global(main[data-brand="flux"] > [data-statement-variant="split"]) {
+    width: min(100% - (var(--page-gutter) * 2), var(--content-max));
+    max-width: var(--brand-statement-max, 68rem);
+    margin: 0 auto;
+    padding: var(--brand-section-space, var(--section-space)) 0;
+  }
+
+  .page :global(main[data-brand="flux"] > [data-statement-variant="split"] > p) {
+    width: auto;
+    margin: 0;
+  }
+
+  .page :global(main[data-brand="flux"] > [data-statement-variant="split"] > figure) {
+    transform: none;
+  }
+
+  .page :global([data-section-id="flux-collections"] > [data-section-copy] > p:first-child) {
+    margin: 0 0 0.8rem;
+  }
+
+  .page :global([data-section-id="flux-collections"]) {
+    padding-top: var(--brand-section-space, var(--section-space));
+    padding-bottom: var(--brand-section-space, var(--section-space));
+  }
+
+  .page :global([data-section-id="flux-collections"] [data-ratio="portrait"]) {
+    height: auto;
+    aspect-ratio: 3 / 4;
+  }
+
+  .page :global(#flux-collections-title) {
+    margin-bottom: 0;
+  }
+
+  .page :global([data-section-id="flux-feature"] [data-media-layout="flux-triptych"]) {
+    width: 100%;
+    aspect-ratio: auto;
+  }
+
+  .page :global([data-section-id="flux-feature"] [data-media-layout="flux-triptych"])
+    [data-ratio] {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+}

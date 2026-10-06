@@ -1,8 +1,8 @@
 import styles from './LocationMap.module.css';
 
-export default function LocationMap({ compact = false }) {
+export default function LocationMap({ compact = false, surface, image = '/assets/contact-map.webp', imageAlt = 'Location map', fit = 'cover' }) {
   return (
-    <section className={`${styles.panel} ${compact ? styles.compact : ''}`} aria-label="Locations">
+    <section className={`${styles.panel} ${compact ? styles.compact : ''}`} aria-label="Locations" data-surface={surface}>
       {!compact && (
         <div className={styles.details}>
           <div>
@@ -14,8 +14,8 @@ export default function LocationMap({ compact = false }) {
           <div>
             <p>Factories</p>
             <span>INTERICH Factory</span>
-            <span>45 Sheehan Drive</span>
-            <span>Braeside VIC 3195</span>
+            <span>29–31 Horne St</span>
+            <span>Hoppers Crossing 3029 VIC</span>
           </div>
           <div>
             <p>S Project / Experience Centre</p>
@@ -26,7 +26,7 @@ export default function LocationMap({ compact = false }) {
         </div>
       )}
       <figure>
-        <img alt="Location map" loading="lazy" src="/assets/contact-map.webp" />
+        <img alt={imageAlt} data-fit={fit} loading="lazy" src={image} />
       </figure>
     </section>
   );

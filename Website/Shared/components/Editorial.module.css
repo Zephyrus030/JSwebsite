@@ -51,7 +51,7 @@
   object-fit: cover;
 }
 
-@media (min-width: 48rem) {
+@container (min-width: 48rem) {
   .split {
     grid-template-columns: minmax(15rem, 0.72fr) minmax(25rem, 1.28fr);
   }

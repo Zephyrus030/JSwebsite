@@ -44,10 +44,29 @@
 }
 
 .compact figure {
-  min-height: clamp(17rem, 35vw, 25rem);
+  min-height: clamp(16.5rem, 34vw, 25rem);
 }
 
-@media (min-width: 48rem) {
+.panel:has(img[data-fit="contain"]) {
+  padding: clamp(3rem, 6vw, 5rem) var(--page-gutter);
+  background: var(--paper);
+}
+
+.panel figure:has(img[data-fit="contain"]) {
+  width: min(100%, 74rem);
+  min-height: 0;
+  margin-inline: auto;
+  background: transparent;
+}
+
+.panel img[data-fit="contain"] {
+  display: block;
+  height: auto;
+  max-height: 32rem;
+  object-fit: contain;
+}
+
+@container (min-width: 48rem) {
   .panel {
     grid-template-columns: minmax(0, 1fr) minmax(28rem, 1.2fr);
   }

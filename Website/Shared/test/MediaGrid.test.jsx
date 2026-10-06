@@ -29,6 +29,8 @@ it('renders every supplied item with its declared ratio class', () => {
     const image = screen.getByRole('img', { name: item.alt });
     expect(image.closest('[data-ratio]')).toHaveAttribute('data-ratio', item.ratio);
     expect(image.closest('[data-ratio]')).toHaveClass(new RegExp(item.ratio));
+    expect(image).not.toHaveAttribute('data-pointer-depth');
+    expect(image.closest('article')).toHaveAttribute('data-reveal-item', 'card');
   }
 });
 

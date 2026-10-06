@@ -2,9 +2,9 @@ const asset = (file) => `/assets/${file}`;
 
 export const experience = {
   hero: {
-    image: asset('experience-hero.webp'),
-    imageAlt: 'Facade of the 578 Experience showroom on Church Street',
-    title: '578 Experience',
+    image: asset('578-hero.png'),
+    imageAlt: 'Facade of the 578 Experience showroom',
+    title: '578 Interiors',
     subtitle: 'A destination where every detail comes together.',
     opening: 'Opening late 2026',
   },
@@ -12,29 +12,29 @@ export const experience = {
     eyebrow: 'About the 578 Experience',
     title: 'A destination where every detail comes together.',
     paragraphs: [
-      'A 1,000m² centre, the 578 Experience brings INTERICH, FLUX and IOAK together in one inspiring physical space.',
-      'Explore the finest in building, interiors and home living — and connect with the experts behind every detail.',
+      'Set within a 1000m² experience centre, 578 Interiors brings INTERICH, FLUX and IOAK together in one considered space. Explore cabinetry, tapware and timber flooring in an environment designed to show how materials, finishes and craftsmanship work together.',
+      'With our designers based in the showroom, every detail can be considered together. From material selection and cabinetry to finishes and overall interior direction, we provide a more complete and coordinated solution — always with our clients’ needs, lifestyle and vision at the centre of the process.',
     ],
-    image: asset('experience-introduction.webp'),
-    imageAlt: 'A refined kitchen at the 578 Experience showroom',
+    image: asset('update1001/578-interiors-1.webp'),
+    imageAlt: 'Entrance to the 578 Experience showroom',
   },
   showroomZones: [
     {
-      src: asset('experience-interich-zone.webp'),
+      src: asset('578-zone-01.jpg'),
       alt: 'INTERICH cabinetry showroom kitchen',
       title: 'INTERICH — Cabinetry Zone',
       text: 'Premium full-home cabinetry and joinery.',
       ratio: 'portrait',
     },
     {
-      src: asset('experience-flux-zone.webp'),
+      src: asset('578-zone-02.jpg'),
       alt: 'FLUX tapware showroom bathroom',
-      title: 'FLUX — Tapware Zone',
+      title: 'FLUX —\nTapware Zone',
       text: 'A refined showcase of tapware and bathroom solutions.',
       ratio: 'portrait',
     },
     {
-      src: asset('experience-ioak-zone.webp'),
+      src: asset('578-zone-03.jpg'),
       alt: 'IOAK flooring showroom display',
       title: 'IOAK — Flooring Zone',
       text: 'Timber flooring sample library and installed floor displays.',
@@ -42,13 +42,13 @@ export const experience = {
     },
   ],
   location: {
-    address: ['578 Church Street,', 'Richmond VIC 3121'],
+    address: ['574–578 Canterbury Road,', 'Vermont 3133 VIC'],
     opening: 'Opening late 2026',
-    map: asset('experience-map.webp'),
-    mapAlt: 'Map showing 578 Church Street in Richmond',
+    map: asset('578-map.png'),
+    mapAlt: 'Map of the 578 showroom area',
   },
   visit: {
-    image: asset('experience-visit.webp'),
+    image: asset('578-visit.jpg'),
     imageAlt: 'Meeting space within the 578 Experience showroom',
     href: 'https://578experience.com.au/',
   },

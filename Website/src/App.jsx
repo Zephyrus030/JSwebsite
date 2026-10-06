@@ -10,6 +10,33 @@ import ExperiencePage from '../Experience/ExperiencePage';
 import Homepage from '../Homepage/Homepage';
 import NewsPage from '../News/NewsPage';
 import NotFoundPage from '../NotFound/NotFoundPage';
+import EditorMode from '../Shared/editor/EditorMode';
+import ScrollRevealObserver from '../Shared/motion/ScrollRevealObserver';
+
+const ENLARGED_PAGE_PATHS = new Set([
+  '/',
+  '/brands/s-project',
+  '/brands/interich',
+  '/brands/ioak',
+  '/brands/flux',
+  '/experience',
+]);
+
+export function PageViewport({ children }) {
+  const { pathname } = useLocation();
+  const normalizedPath = pathname.replace(/\/+$/, '') || '/';
+  const isEnlarged = ENLARGED_PAGE_PATHS.has(normalizedPath);
+
+  return (
+    <div
+      data-page-viewport
+      data-page-scale={isEnlarged ? '1.1' : undefined}
+      style={isEnlarged ? { '--page-scale': 1.1 } : undefined}
+    >
+      {children}
+    </div>
+  );
+}
 
 export function RouteFocus() {
   const { pathname } = useLocation();
@@ -23,9 +50,11 @@ export function RouteFocus() {
 
 export default function App() {
   return (
-    <>
+    <EditorMode>
       <RouteFocus />
-      <Routes>
+      <PageViewport>
+        <ScrollRevealObserver />
+        <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/brands/s-project" element={<SProjectPage />} />
@@ -36,7 +65,8 @@ export default function App() {
         <Route path="/news" element={<NewsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </>
+        </Routes>
+      </PageViewport>
+    </EditorMode>
   );
 }

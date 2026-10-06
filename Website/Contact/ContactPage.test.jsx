@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { expect, it } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
@@ -51,7 +51,7 @@ it('rejects an invalid email and confirms a valid local appointment request', as
 
   await user.type(screen.getByLabelText(/Full name/i), 'Jane Smith');
   await user.type(screen.getByLabelText(/^Email$/i), 'not-an-email');
-  await user.click(screen.getByLabelText('578 Experience'));
+  await user.click(screen.getByLabelText('578 Interiors'));
   await user.type(screen.getByLabelText(/Preferred date/i), '2026-08-01');
   await user.selectOptions(screen.getByLabelText(/Preferred time/i), '10:00');
   await user.click(screen.getByRole('button', { name: /Request appointment/i }));
@@ -79,12 +79,54 @@ it('returns keyed errors for missing appointment values', () => {
   });
 });
 
-it('renders the plan-your-visit content and two appointment locations', () => {
+it('renders two photographs per location without the old 578 artwork or booking controls', () => {
   render(<MemoryRouter><ContactPage /></MemoryRouter>);
 
   expect(screen.getByRole('heading', { level: 1, name: 'Plan your visit.' })).toBeInTheDocument();
-  expect(screen.getByRole('heading', { name: '578 Experience' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { level: 2, name: '578 Interiors' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'INTERICH Factory' })).toBeInTheDocument();
-  expect(screen.getByRole('img', { name: 'Location map' })).toBeInTheDocument();
+  const locations = screen.getAllByRole('article');
+  expect(locations).toHaveLength(3);
+  for (const location of locations) {
+    expect(location.querySelectorAll('img')).toHaveLength(2);
+    expect(new Set([...location.querySelectorAll('img')].map((image) => image.src)).size).toBe(2);
+    expect(location.querySelector('address')).toBeInTheDocument();
+  }
+  expect(document.querySelector('main img[src="/assets/578-hero.png"], main img[src="/assets/578-entrance.png"], main img[src="/assets/578-map.png"]')).not.toBeInTheDocument();
+  expect(screen.queryByRole('img', { name: /Map showing 578/ })).not.toBeInTheDocument();
+  expect(document.body.textContent).not.toContain('578 Experience');
+  expect(document.querySelector('form')).not.toBeInTheDocument();
+  expect(document.querySelector('a[href="#appointment"]')).not.toBeInTheDocument();
+  expect(screen.queryByRole('link', { name: /book/i })).not.toBeInTheDocument();
+  expect(screen.queryByText(/03 XXXX XXXX/)).not.toBeInTheDocument();
   expect(screen.getByRole('contentinfo')).toBeInTheDocument();
+});
+
+it('ends with Head Office and includes the supplied email and phone in every location', () => {
+  render(<MemoryRouter><ContactPage /></MemoryRouter>);
+
+  const cards = screen.getAllByRole('article');
+  expect(within(cards.at(-1)).getByRole('heading', { name: 'Head Office' })).toBeInTheDocument();
+  expect(within(cards.at(-1)).getByText('1 Aristoc Rd, Glen Waverley VIC 3150')).toBeInTheDocument();
+  expect(within(cards[0]).getByText('574–578 Canterbury Road, Vermont 3133 VIC')).toBeInTheDocument();
+  expect(within(cards[1]).getByText('29-31 Horne St, Hoppers Crossing 3029 VIC')).toBeInTheDocument();
+  for (const card of cards) {
+    expect(within(card).getByRole('link', { name: 'info@jsbuildinggroup.com.au' }))
+      .toHaveAttribute('href', 'mailto:info@jsbuildinggroup.com.au');
+    expect(within(card).getByRole('link', { name: '(03) 8086 2666' }))
+      .toHaveAttribute('href', 'tel:+61380862666');
+  }
+});
+
+it('shows construction notices as separate small-text lines', () => {
+  render(<MemoryRouter><ContactPage /></MemoryRouter>);
+
+  const cards = screen.getAllByRole('article');
+  const factoryCard = cards.find((card) => within(card).queryByRole('heading', { name: 'INTERICH Factory' }));
+  const officeCard = cards.find((card) => within(card).queryByRole('heading', { name: 'Head Office' }));
+
+  for (const card of [factoryCard, officeCard]) {
+    expect(card.querySelector('[class*="locationDescription"]')).not.toHaveTextContent('Under construction.');
+    expect(card.querySelector('[data-location-status]')).toHaveTextContent('Under construction.');
+  }
 });

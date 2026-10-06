@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './Reveal.module.css';
 
-export default function Reveal({ children, className = '' }) {
+export default function Reveal({ children, className = '', surface }) {
   const elementRef = useRef(null);
   const [revealed, setRevealed] = useState(false);
 
@@ -34,6 +34,7 @@ export default function Reveal({ children, className = '' }) {
     <div
       className={`${styles.reveal} ${revealed ? styles.revealed : ''} ${className}`.trim()}
       data-revealed={revealed}
+      data-surface={surface}
       ref={elementRef}
     >
       {children}

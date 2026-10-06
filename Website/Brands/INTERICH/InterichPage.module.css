@@ -1,3 +1,111 @@
 .page {
   --brand-pace: 1;
+  --interich-paper: var(--paper);
+  --interich-tint: var(--tint);
+  --interich-deep: var(--tint);
+  --interich-warm: #eee9e2;
+  background: var(--interich-paper);
+}
+
+.page :global([data-section-id="interich-collections"] > [data-layout="reference"]) {
+  text-align: center;
+}
+
+@container (min-width: 48rem) {
+  .page :global(main[data-brand="interich"]) [data-hero-layout="full-bleed"] p:first-of-type {
+    margin: -51px 0 13px;
+    transform: translateY(-2rem);
+  }
+
+  .page :global(main[data-brand="interich"])
+    [data-hero-layout="full-bleed"]
+    [data-motion-step="scroll"] {
+    transform: translateY(-4rem);
+  }
+
+  .page :global(main[data-brand="interich"] > [data-hero-layout="full-bleed"])
+    .figure::after {
+    background: linear-gradient(
+      to bottom,
+      rgb(0 0 0 / 20%) 0%,
+      rgb(0 0 0 / 10%) 66.67%,
+      rgb(0 0 0 / 10%) 100%
+    );
+  }
+
+  .page :global(main[data-brand="interich"] > [data-section-id="interich-collections"]) {
+    padding: 31.47px 0 127.47px;
+  }
+
+  .page :global([data-section-id="interich-collections"] > [data-section-copy] > p:first-child) {
+    margin: 10px 0 3px;
+    font-size: 13.48px;
+    font-weight: 500;
+  }
+
+  .page :global(#interich-collections-title) {
+    margin: 6px -3px -28px 0;
+    font-size: 20.63px;
+    font-weight: 200;
+  }
+
+  .page :global([data-section-id="interich-collections"] > [data-layout="reference"]) {
+    padding: 19px 7px 0;
+    margin-right: 23px;
+    margin-left: 23px;
+    gap: calc(var(--grid-gap) * 0.5);
+  }
+
+  .page :global([data-section-id="interich-collections"] > [data-cta-placement="feature"]) {
+    justify-items: center;
+    padding: 29px 0 0;
+    margin: 10px 0 -67px;
+    text-align: center;
+  }
+
+  .page :global([data-section-id="interich-feature"]) {
+    margin-bottom: -40px;
+  }
+
+  .page :global([data-section-id="interich-feature"] > [data-section-copy]) {
+    margin-top: -57px;
+    margin-right: 17px;
+    margin-left: -24px;
+  }
+
+  .page :global([data-section-id="interich-feature"] > [data-section-copy] > p:first-child) {
+    margin-bottom: 8px;
+    font-size: 13.48px;
+    font-weight: 500;
+  }
+
+  .page :global(#interich-feature-title) {
+    font-size: 30.63px;
+  }
+
+  .page :global([data-section-id="interich-feature"] > figure > img) {
+    height: calc(100% + 14px);
+    margin-top: -14px;
+  }
+
+  .page :global(main[data-brand="interich"] > [data-section-id="interich-manufacturing"]) {
+    padding: 62.47px 0;
+    margin: -19px auto 0;
+  }
+
+  .page :global([data-section-id="interich-manufacturing"] > [data-section-copy]) {
+    margin-top: -26px;
+    margin-right: -13px;
+    margin-left: 19px;
+  }
+
+  .page :global([data-section-id="interich-manufacturing"] > [data-section-copy] > p:first-child) {
+    margin-bottom: 17px;
+    font-size: 12.48px;
+    font-weight: 500;
+  }
+
+  .page :global(#interich-manufacturing-title) {
+    font-size: 32.63px;
+  }
 }

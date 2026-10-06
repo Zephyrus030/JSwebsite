@@ -7,6 +7,7 @@
 }
 
 .figure {
+  position: relative;
   grid-area: 1 / 1;
   min-height: inherit;
   margin: 0;
@@ -17,8 +18,77 @@
   width: 100%;
   height: 100%;
   min-height: inherit;
+  filter:
+    brightness(var(--hero-image-brightness, 1))
+    contrast(var(--hero-image-contrast, 1))
+    sepia(var(--hero-image-warmth, 0))
+    saturate(var(--hero-image-saturation, 1))
+    hue-rotate(var(--hero-image-hue, 0deg));
   object-fit: cover;
   object-position: var(--hero-image-position, center);
+}
+
+.hero[data-motion-sequence="hero"] .figure {
+  animation: hero-frame-in 1000ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero[data-motion-sequence="hero"] [data-motion-step="eyebrow"],
+.hero[data-motion-sequence="hero"] [data-motion-step="wordmark"],
+.hero[data-motion-sequence="hero"] [data-motion-step="copy"],
+.hero[data-motion-sequence="hero"] [data-motion-step="scroll"] {
+  animation: hero-copy-in 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero[data-motion-sequence="hero"] [data-motion-step="eyebrow"] {
+  animation-delay: 160ms;
+}
+
+.hero[data-motion-sequence="hero"] [data-motion-step="wordmark"] {
+  animation-delay: 230ms;
+}
+
+.hero[data-motion-sequence="hero"] [data-motion-step="copy"] {
+  animation-delay: 320ms;
+}
+
+.hero[data-motion-sequence="hero"] [data-motion-step="scroll"] {
+  animation-delay: 410ms;
+}
+
+.hero[data-motion-sequence="hero"] .wordmarkSvg path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: hero-wordmark-draw 760ms cubic-bezier(0.16, 1, 0.3, 1) 260ms both;
+}
+
+.hero[data-motion-sequence="hero"] .wordmarkSvg path:nth-child(2) { animation-delay: 300ms; }
+.hero[data-motion-sequence="hero"] .wordmarkSvg path:nth-child(3) { animation-delay: 340ms; }
+.hero[data-motion-sequence="hero"] .wordmarkSvg path:nth-child(4) { animation-delay: 380ms; }
+
+@keyframes hero-frame-in {
+  from {
+    clip-path: inset(0 2.5% 0 0);
+  }
+
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes hero-copy-in {
+  from {
+    translate: 0 0.75rem;
+    clip-path: inset(0 0 22% 0);
+  }
+
+  to {
+    translate: 0 0;
+    clip-path: inset(0 0 -0.25em 0);
+  }
+}
+
+@keyframes hero-wordmark-draw {
+  to { stroke-dashoffset: 0; }
 }
 
 .content {
@@ -28,6 +98,7 @@
   width: min(100% - (var(--page-gutter) * 2), 30rem);
   margin-left: var(--hero-content-offset, var(--page-gutter));
   color: var(--ink);
+  transform: translateY(var(--hero-content-translate-y, 0));
 }
 
 .overlay .content {
@@ -48,9 +119,25 @@
   margin: 1rem 0;
   font-size: var(--text-hero);
   font-weight: 300;
-  letter-spacing: 0.012em;
+  letter-spacing: 0.035em;
   line-height: 0.98;
   outline: none;
+}
+
+.figure::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  content: '';
+}
+
+.hero[data-image-brightness-gradient="vertical"] .figure::after {
+  background: linear-gradient(to bottom, rgb(0 0 0 / 20%) 0%, rgb(0 0 0 / 0%) 25%, rgb(255 255 255 / 0%) 70%, rgb(255 255 255 / 20%) 100%);
+}
+
+.hero[data-image-brightness-gradient="right-to-left"] .figure::after {
+  background: linear-gradient(to left, rgb(0 0 0 / 30%) 0%, rgb(0 0 0 / 0%) 66.667%);
 }
 
 .content h1 > span {
@@ -60,6 +147,12 @@
 .wordmark {
   width: max-content;
   max-width: 100%;
+}
+
+.wordmarkImage {
+  display: block;
+  width: clamp(30rem, 75vw, 60rem);
+  height: auto;
 }
 
 .content h1.s-project {
@@ -89,6 +182,10 @@
   font-stretch: condensed;
   font-weight: 200;
   letter-spacing: 0.34em;
+}
+
+.content h1.interich.wordmark {
+  max-width: 100%;
 }
 
 .content h1.ioak {
@@ -121,13 +218,14 @@
 .text {
   max-width: 25rem;
   margin: 0;
+  white-space: pre-line;
 }
 
 .full-bleed::after {
   position: absolute;
   z-index: 0;
   inset: 0;
-  background: linear-gradient(90deg, rgb(247 246 242 / 94%) 0%, rgb(247 246 242 / 78%) 24%, rgb(247 246 242 / 18%) 52%, transparent 72%);
+  background: linear-gradient(270deg, rgb(247 246 242 / 94%) 0%, rgb(247 246 242 / 78%) 24%, rgb(247 246 242 / 18%) 52%, transparent 72%);
   content: '';
 }
 
@@ -135,11 +233,17 @@
   position: relative;
   z-index: 1;
   width: min(100% - (var(--page-gutter) * 2), var(--hero-content-max, 30rem));
+  color: rgb(235 235 231 / 94%);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 28%), 0 0 18px rgb(255 255 255 / 20%);
 }
 
-@media (min-width: 48rem) {
+.full-bleed .content:has(.s-projectHeadline) {
+  width: min(100% - (var(--page-gutter) * 2), 52rem);
+}
+
+@container (min-width: 48rem) {
   .full-bleed {
-    height: calc(100svh - 4.5rem);
+    height: var(--hero-height, calc(100svh - 4rem));
     min-height: 0;
     grid-template-rows: minmax(0, 1fr);
   }
@@ -180,6 +284,33 @@
   font-family: inherit;
 }
 
+.scrollBreath {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  animation: scroll-breathe 2800ms ease-in-out 900ms infinite both;
+}
+
+@keyframes scroll-breathe {
+  0%,
+  100% {
+    opacity: 0.78;
+    translate: 0 0;
+  }
+
+  50% {
+    opacity: 1;
+    translate: 0 1px;
+  }
+}
+
+.s-projectHeadline {
+  max-width: 42rem;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
 .right .content {
   justify-self: end;
   margin-right: var(--page-gutter);
@@ -198,7 +329,7 @@
   margin-left: auto;
 }
 
-@media (min-width: 48rem) {
+@container (min-width: 48rem) {
   .hero {
     grid-template-columns: minmax(22rem, 40%) 1fr;
   }
@@ -223,12 +354,30 @@
   }
 }
 
-@media (max-width: 47.99rem) {
+@container (max-width: 47.99rem) {
   .hero {
     min-height: calc(100svh - 4rem);
   }
 
   .figure {
     opacity: 0.68;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero[data-motion-sequence="hero"] .figure,
+  .hero[data-motion-sequence="hero"] [data-motion-step],
+  .hero[data-motion-sequence="hero"] .wordmarkSvg path {
+    animation: none;
+    clip-path: none;
+    scale: 1;
+    stroke-dashoffset: 0;
+    translate: none;
+  }
+
+  .scrollBreath {
+    opacity: 1;
+    animation: none;
+    translate: none;
   }
 }

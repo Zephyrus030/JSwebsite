@@ -1,18 +1,67 @@
-export const newsCategories = ['ALL', 'S PROJECT', 'INTERICH', 'IOAK', 'FLUX'];
-
-export const newsProjects = [
-  { title: 'Brighton Residence', brand: 'S PROJECT', date: '02 MAY 2024', location: 'BRIGHTON, VIC', src: '/assets/news-brighton.webp', alt: 'Brighton residence entry framed by mature trees', ratio: 'portrait' },
-  { title: 'Kew Kitchen', brand: 'INTERICH', date: '24 APR 2024', location: 'KEW, VIC', src: '/assets/news-kew-kitchen.webp', alt: 'Timber kitchen with a stone island and black stools', ratio: 'portrait' },
-  { title: 'Toorak Herringbone', brand: 'IOAK', date: '19 APR 2024', location: 'TOORAK, VIC', src: '/assets/news-toorak-herringbone.webp', alt: 'Light timber herringbone flooring', ratio: 'portrait' },
-  { title: 'Arc Collection', brand: 'FLUX', date: '10 APR 2024', location: 'PRAHRAN, VIC', src: '/assets/news-arc-collection.webp', alt: 'Matte black tapware on a pale stone bench', ratio: 'portrait' },
-  { title: 'Hawthorn House', brand: 'S PROJECT', date: '28 MAR 2024', location: 'HAWTHORN, VIC', src: '/assets/news-hawthorn-house.webp', alt: 'Courtyard garden of a contemporary home', ratio: 'portrait' },
-  { title: 'Canterbury Dressing Room', brand: 'INTERICH', date: '20 MAR 2024', location: 'CANTERBURY, VIC', src: '/assets/news-canterbury-dressing-room.webp', alt: 'Custom timber dressing room cabinetry', ratio: 'portrait' },
-  { title: 'Natural Oak Residence', brand: 'IOAK', date: '14 MAR 2024', location: 'ARMADALE, VIC', src: '/assets/news-natural-oak-residence.webp', alt: 'Living room with timber flooring and garden outlook', ratio: 'portrait' },
-  { title: 'Vermont Ensuite', brand: 'FLUX', date: '06 MAR 2024', location: 'MALVERN, VIC', src: '/assets/news-vermont-ensuite.webp', alt: 'Stone ensuite with wall-mounted black tapware', ratio: 'portrait' },
+export const newsStories = [
+  {
+    id: '578-interiors',
+    category: '578 Interiors / Construction update',
+    title: '578 Interiors is taking shape.',
+    date: '14 Sep 2026',
+    dateTime: '2026-09-14',
+    text: 'Our 1000 m² experience centre is currently under construction and will open its doors later this year, bringing flooring, tapware, cabinetry and architectural finishes together under one roof.',
+    images: [
+      { src: '/assets/update1001/578-contact-2-news-1.webp', alt: 'Front entrance of the 578 Interiors showroom' },
+      { src: '/assets/update1001/578-news-2.webp', alt: 'Curved walls and ceiling under construction at 578 Interiors' },
+      { src: '/assets/update1001/578-news-3.webp', alt: 'Showroom interior fit-out in progress at 578 Interiors' },
+    ],
+  },
+  {
+    id: 'interich',
+    category: 'INTERICH / Factory update',
+    title: 'Factory tours coming soon.',
+    date: '',
+    dateTime: null,
+    text: 'Our custom cabinetry factory in Melbourne’s west is preparing to welcome visitors. Once open, clients will be able to book a guided tour of the production line and see how their cabinetry is made from start to finish.',
+    images: [
+      { src: '/assets/update1001/interich-news-1.webp', alt: 'Cabinetry production machinery for the INTERICH factory' },
+      { src: '/assets/update922/contact-interich-2.webp', alt: 'JS Building Group western factory side elevation' },
+      { src: '/assets/update922/contact-interich-1.webp', alt: 'JS Building Group western factory front elevation', objectPosition: '30% 50%' },
+    ],
+  },
+  {
+    id: 'ioak',
+    category: 'IOAK / Collection update',
+    title: 'A new chapter in timber flooring.',
+    date: '26 Aug 2026',
+    dateTime: '2026-08-26',
+    text: 'We’re refining the entire IOAK flooring collection, with new parquet designs also in development. More details will be shared as the collection takes shape.',
+    images: [
+      { src: '/assets/update922/ioak-news-2.webp', alt: 'Parquet patterns being developed by hand' },
+      { src: '/assets/update922/ioak-news-1.webp', alt: 'IOAK parquet flooring design' },
+      { src: '/assets/update922/ioak-news-3.webp', alt: 'Close detail of an IOAK parquet pattern' },
+    ],
+  },
+  {
+    id: 'flux',
+    category: 'FLUX / Product development',
+    title: 'Two collections are taking shape.',
+    date: '18 Aug 2026',
+    dateTime: '2026-08-18',
+    text: 'FLUX is currently developing two tapware collections: a considered core range and a distinctive design collection. Both are being developed with a focus on clean forms, thoughtful details and lasting performance.',
+    images: [
+      { src: '/assets/update922/flux-news-1.webp', alt: 'FLUX tapware packaging development' },
+      { src: '/assets/update922/flux-news-2.webp', alt: 'Polished FLUX basin tapware prototype' },
+      { src: '/assets/update922/flux-news-3.webp', alt: 'FLUX tapware concept sketches' },
+    ],
+  },
+  {
+    id: 's-project',
+    category: 'S Project / Project update',
+    title: 'The Project in Glen Waverley',
+    date: '28 Sep 2026',
+    dateTime: '2026-09-28',
+    text: 'under Construction of two double storey at 3 edinburgh avenue glen waverley 3150',
+    images: [
+      { src: '/assets/update1001/s-project-news-2.webp', alt: 'S Project timber-framed homes under construction on Edinburgh Avenue' },
+      { src: '/assets/update1001/s-project-news-3.webp', alt: 'Close view of timber framing and blue wall wrap at the S Project site' },
+      { src: '/assets/update1001/s-project-news-1.webp', alt: 'Street view of the S Project construction site in Glen Waverley' },
+    ],
+  },
 ];
-
-export function filterProjects(projects, category) {
-  return category === 'ALL'
-    ? projects
-    : projects.filter((project) => project.brand === category);
-}

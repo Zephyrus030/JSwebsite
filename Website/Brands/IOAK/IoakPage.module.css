@@ -2,16 +2,449 @@
   --brand-pace: 1;
 }
 
-.hero {
-  --hero-content-offset: clamp(4.5rem, 20.6vw, 25rem);
-  --hero-content-max: 32rem;
-  --hero-headline-size: clamp(2.75rem, 4.4vw, 4.5rem);
+:global(html:has(main[data-brand="ioak"])),
+:global(body:has(main[data-brand="ioak"])) {
+  overflow-x: hidden;
 }
 
-@media (max-width: 47.99rem) {
+.page :global([data-section-id="ioak-collections"] > [data-layout="reference"]),
+.page :global([data-section-id="ioak-collections"] > [data-layout="reference"]) article {
+  text-align: center;
+}
+
+.page :global([data-section-id="ioak-collections"] > [data-cta-placement="feature"]) {
+  justify-items: center;
+  text-align: center;
+}
+
+.page :global([data-section-id="ioak-collections"] > [data-cta-placement="feature"]) a {
+  text-align: center;
+}
+
+.hero {
+  --hero-content-offset: clamp(267.12px, 58.844vw, 718.49px);
+  --hero-content-max: min(32rem, calc(100vw - var(--hero-content-offset) - 32px));
+  --hero-headline-size: 16.72px;
+  height: calc(var(--hero-height, calc(100svh - 4rem)) + 1px);
+}
+
+.hero::after {
+  background: transparent;
+}
+
+.hero > div {
+  text-align: center;
+}
+
+.hero [data-headline-variant="ioak"] {
+  width: min(100%, 368.8px);
+  max-width: none;
+  margin: 20.52px auto 4px;
+  color: #f3eadd;
+  font-size: 16.72px;
+  font-weight: 200;
+  opacity: 0.82;
+}
+
+.hero[data-motion-sequence="hero"] [data-headline-variant="ioak"] {
+  --ioak-motion-opacity: 0.82;
+  animation-name: ioak-copy-in;
+  animation-delay: 820ms;
+  animation-duration: 480ms;
+}
+
+.hero p:first-of-type {
+  height: 18.14px;
+  margin: 28px auto 4px;
+  color: #eae2dc;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.hero[data-motion-sequence="hero"] p:first-of-type[data-motion-step="eyebrow"] {
+  --ioak-motion-opacity: 1;
+  animation-name: ioak-copy-in;
+  animation-delay: 690ms;
+  animation-duration: 420ms;
+}
+
+.hero :global(button[class*="scrollCue"]) {
+  display: block;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 146px auto 0;
+  font-size: 9px;
+  opacity: 0.81;
+}
+
+.hero[data-motion-sequence="hero"] :global(button[class*="scrollCue"][data-motion-step="scroll"]) {
+  --ioak-motion-opacity: 0.81;
+  animation-name: ioak-copy-in;
+  animation-delay: 1040ms;
+  animation-duration: 420ms;
+}
+
+@keyframes ioak-copy-in {
+  from {
+    opacity: 0;
+    clip-path: inset(0 0 22% 0);
+    translate: 0 0.75rem;
+  }
+
+  to {
+    opacity: var(--ioak-motion-opacity);
+    clip-path: inset(0);
+    translate: 0 0;
+  }
+}
+
+.hero[data-motion-sequence="hero"] :global(h1[data-wordmark="ioak"]) {
+  animation-name: ioak-wordmark-in;
+  animation-delay: 220ms;
+  animation-duration: 580ms;
+}
+
+@keyframes ioak-wordmark-in {
+  from {
+    opacity: 0;
+    translate: 0 0.75rem;
+  }
+
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.hero :global(h1[data-wordmark="ioak"]) {
+  width: clamp(10rem, 52vw, 14rem);
+  max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.hero :global(h1[data-wordmark="ioak"] img) {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 35px;
+  transform: scale(1.08);
+  transform-origin: center;
+}
+
+.page :global(main[data-brand="ioak"]) [data-statement-variant="split"] > p:last-child {
+  margin: -5px 0 0;
+  color: var(--body);
+  font-size: 21.64px;
+  font-weight: 200;
+  line-height: 1.62;
+  opacity: 1;
+}
+
+.page :global(main[data-brand="ioak"]) [data-statement-variant="split"] > figure {
+  width: 486.2px;
+  height: 456.4px;
+  margin-right: -4px;
+  transform: translate(-5.5px, -42.5px);
+}
+
+.page :global(main[data-brand="ioak"]) [data-statement-variant="split"] > figure img {
+  object-position: center top;
+}
+
+.page :global(main[data-brand="ioak"]) [data-section-id="ioak-collections"]
+  [data-section-copy] > p:first-child {
+  min-height: 32.25px;
+}
+
+.page :global(main[data-brand="ioak"]) [data-section-id="ioak-collections"] [data-ratio="square"] {
+  width: min(100%, 340.88px);
+  aspect-ratio: 340.88 / 331.88;
+  transform: scale(0.98);
+  transform-origin: center;
+}
+
+.page :global([data-section-id="ioak-collections"] > [data-section-copy] > p:first-child) {
+  border-color: #888072;
+  color: var(--muted);
+  font-weight: 700;
+  opacity: 1;
+}
+
+.page :global(#ioak-collections-title) {
+  color: var(--ink);
+  font-weight: 500;
+  opacity: 1;
+}
+
+.page :global([data-section-id="ioak-collections"] article > h3) {
+  margin-top: 17px;
+  margin-bottom: 1px;
+  border-color: #92642f;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.page :global([data-section-id="ioak-collections"] article > p) {
+  width: 310.88px;
+  max-width: calc(100% - 28px);
+  margin-left: 14px;
+  color: var(--body);
+  font-size: 14px;
+}
+
+.page :global([data-section-id="ioak-materials"] [data-section-copy] > p:first-child) {
+  margin-bottom: 9px;
+  margin-left: -3px;
+  color: var(--muted);
+  font-size: 12.12px;
+  opacity: 1;
+}
+
+.page :global(#ioak-materials-title) {
+  margin-left: -3px;
+  color: var(--ink);
+}
+
+.page :global([data-section-id="ioak-materials"] [data-section-copy] > p:last-child) {
+  width: min(356.09px, calc(100% + 4px));
+  margin-left: -4px;
+  color: var(--body);
+  font-size: 15.12px;
+  opacity: 1;
+}
+
+.page :global([data-section-id="ioak-factory"] [data-section-copy] > p:first-child) {
+  color: var(--muted);
+}
+
+.page :global(#ioak-factory-title) {
+  color: var(--ink);
+}
+
+.page :global([data-section-id="ioak-factory"] [data-section-copy] > p:last-child) {
+  color: var(--body);
+  font-size: 15.12px;
+  opacity: 1;
+}
+
+.page :global(main[data-brand="ioak"]) [data-section-id="ioak-collections"]
+  [data-cta-placement="feature"] a {
+  width: min(100%, 283px);
+  min-width: 0;
+}
+
+@container (min-width: 48rem) {
+  .page :global(main[data-brand="ioak"] > [data-statement-variant="split"]) {
+    column-gap: 2.6rem;
+    row-gap: 1.5rem;
+  }
+
+  .page :global(main[data-brand="ioak"] > [data-statement-variant="split"]) > figure {
+    grid-row: 1 / span 2;
+  }
+
+  .page :global(main[data-brand="ioak"] > [data-statement-variant="split"]) > p:first-of-type {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+  }
+
+  .page :global(main[data-brand="ioak"] > [data-statement-variant="split"]) > p:last-child {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+  }
+
+  :global([data-page-scale="1.1"]) .hero {
+    --hero-content-offset: clamp(242.84px, 53.4945vw, 653.17px);
+    --hero-content-max: min(
+      32rem,
+      calc(90.9091vw - var(--hero-content-offset) - 32px)
+    );
+  }
+
+  .hero > div {
+    margin-top: 100px;
+    margin-bottom: 49px;
+  }
+
+  .hero :global(h1[data-wordmark="ioak"]) {
+    width: 230px;
+    max-width: none;
+  }
+
+  .page :global(main[data-brand="ioak"] > [data-statement-variant="split"]) {
+    margin: -18px auto;
+    padding: 142.57px 0 50.57px;
+  }
+
+  .page :global(main[data-brand="ioak"]) [data-statement-variant="split"] > p:last-child {
+    width: 388.8px;
+    min-height: 157.43px;
+    margin: -51px -40px 0 50px;
+    transform: translateY(-38px);
+    letter-spacing: 0.012em;
+  }
+
+  .page :global(main[data-brand="ioak"]) [data-statement-variant="split"] > figure {
+    margin-bottom: 35px;
+  }
+
+  .page :global(main[data-brand="ioak"]) [data-section-id="ioak-factory"] [data-section-copy] {
+    margin-right: -16px;
+    margin-left: 25px;
+  }
+
+  .page :global([data-section-id="ioak-collections"] > [data-section-copy] > p:first-child) {
+    margin: -48px 0 -21.2px;
+  }
+
+  .page :global(#ioak-collections-title) {
+    padding: 6px 1px 0 8px;
+    margin-top: 21px;
+    font-size: 20.2px;
+  }
+
+  .page :global([data-section-id="ioak-collections"] > [data-layout="reference"]) {
+    margin-top: -28px;
+    margin-bottom: 35px;
+  }
+
+  .page :global([data-section-id="ioak-materials"]) {
+    max-width: 1086.9px;
+  }
+
+  .page :global([data-section-id="ioak-materials"] [data-section-copy] > p:last-child) {
+    width: 356.09px;
+  }
+
+  .page :global([data-section-id="ioak-factory"]) {
+    width: min(calc(100% - (var(--page-gutter) * 2) + 6px), var(--feature-max));
+    margin-top: -7px;
+  }
+}
+
+@container (min-width: 48rem) and (max-width: 64rem) {
+  .hero :global(button[class*="scrollCue"]) {
+    transform: translateY(-24px);
+  }
+}
+
+@container (max-width: 47.99rem) {
   .hero {
     --hero-content-offset: var(--page-gutter);
     --hero-content-max: 24rem;
-    --hero-headline-size: clamp(2.5rem, 11vw, 3.25rem);
+    height: var(--hero-height, calc(100svh - 4rem));
+    min-height: 0;
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .hero > figure,
+  .hero > figure > img {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .hero [data-headline-variant="ioak"] {
+    width: min(100%, 368.8px);
+  }
+
+  .page :global(main[data-brand="ioak"]) [data-statement-variant="split"] > p:last-child {
+    margin: -5px 0 0;
+  }
+
+  .page :global(main[data-brand="ioak"]) [data-statement-variant="split"] > figure {
+    width: min(100%, 486.2px);
+    height: auto;
+    margin-right: 0;
+    transform: none;
+  }
+
+  .page :global([data-section-id="ioak-collections"] > [data-cta-placement="feature"]) {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-height: 35rem) {
+  @container (max-width: 47.99rem) {
+    .hero :global(button[class*="scrollCue"]) {
+      transform: translateY(-84px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero[data-motion-sequence="hero"] :global(h1[data-wordmark="ioak"]),
+  .hero[data-motion-sequence="hero"] p:first-of-type[data-motion-step="eyebrow"],
+  .hero[data-motion-sequence="hero"] [data-headline-variant="ioak"],
+  .hero[data-motion-sequence="hero"]
+    :global(button[class*="scrollCue"][data-motion-step="scroll"]) {
+    animation: none;
+    clip-path: none;
+    translate: none;
+  }
+
+  .hero[data-motion-sequence="hero"] p:first-of-type[data-motion-step="eyebrow"] {
+    opacity: 1;
+  }
+
+  .hero[data-motion-sequence="hero"] [data-headline-variant="ioak"] {
+    opacity: 0.82;
+  }
+
+  .hero[data-motion-sequence="hero"]
+    :global(button[class*="scrollCue"][data-motion-step="scroll"]) {
+    opacity: 0.81;
+  }
+}
+
+.page :global(main[data-brand="ioak"]) [data-statement-variant="split"] > p:first-of-type {
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.55;
+}
+
+.page :global(main[data-brand="ioak"]) [data-statement-variant="split"] > p:last-child {
+  width: auto;
+  min-height: 0;
+  margin: 0;
+  font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
+  letter-spacing: 0;
+  line-height: 1.65;
+  transform: none;
+}
+
+@container (min-width: 48rem) {
+  .page :global(main[data-brand="ioak"] > [data-statement-variant="split"]) {
+    align-items: center;
+    column-gap: 2.6rem;
+    row-gap: 1.5rem;
+  }
+
+  .page :global(main[data-brand="ioak"] > [data-statement-variant="split"]) > p:first-of-type {
+    align-self: end;
+    grid-column: 2;
+    grid-row: 1;
+    margin: -109px -45px 0 35px;
+  }
+
+  .page :global(main[data-brand="ioak"] > [data-statement-variant="split"]) > p:last-child {
+    align-self: start;
+    grid-column: 2;
+    grid-row: 2;
+    width: auto;
+    min-height: 0;
+    margin: 0 -45px 0 35px;
+    color: var(--ink);
+    font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+    transform: none;
+  }
+}
+
+@container (max-width: 47.99rem) {
+  .page :global(main[data-brand="ioak"] > [data-statement-variant="split"]) > p:last-child {
+    margin: 0;
   }
 }

@@ -1,126 +1,274 @@
 .footer {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 2rem;
-  padding: clamp(3rem, 7vw, 6rem) var(--page-gutter) 1.75rem;
-  color: var(--inverse-text);
-  background: var(--inverse-surface);
-}
-
-.brandFooter {
-  padding-top: clamp(2.5rem, 5vw, 4rem);
-  color: var(--ink);
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-}
-
-.brandFooter .brand p + p {
   color: var(--body);
+  background: var(--paper);
+  font-family: var(--font-sans);
 }
 
-.brandFooter small {
-  color: var(--muted);
-  border-top-color: var(--border);
-}
-
-.compactFooter {
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  min-height: 6.5rem;
+.main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.85fr);
   align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem var(--page-gutter);
-  color: var(--ink);
-  background: var(--surface);
+  gap: clamp(2rem, 4vw, 5rem);
+  padding: clamp(3.5rem, 5vw, 6rem) clamp(1.5rem, 2.6vw, 3.5rem) 2.5rem;
+}
+
+.divided {
   border-top: 1px solid var(--border);
 }
 
-.compactBrand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
+.divided .main {
+  padding-top: 2.5rem;
+}
+
+.brand {
+  padding-bottom: 3rem;
+  text-align: center;
+}
+
+.brandName {
+  margin: 0;
   color: var(--ink);
+  font-size: clamp(1.2rem, 1.75vw, 2rem);
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  line-height: 1.4;
 }
 
-.compactBrand span:first-child {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.7rem;
-  letter-spacing: -0.08em;
-  line-height: 0.8;
+.tagline {
+  max-width: 34rem;
+  margin: 0.65rem auto 0;
+  font-size: clamp(0.7rem, 0.85vw, 1rem);
+  letter-spacing: 0;
+  line-height: 1.8;
 }
 
-.compactBrand span:last-child,
-.compactNavigation a,
-.compactFooter small {
-  font-size: 0.5rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  line-height: 1;
+.details {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: 2.5rem clamp(1.5rem, 3vw, 3.75rem);
+  min-width: 0;
+}
+
+.heading {
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+  font-size: clamp(0.75rem, 0.95vw, 1.05rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  text-align: center;
   text-transform: uppercase;
 }
 
-.compactFooter small {
-  grid-column: auto;
-  padding: 0;
-  color: var(--muted);
-  border: 0;
-}
-
-.compactNavigation {
-  display: flex;
-  justify-content: flex-end;
-  gap: clamp(1rem, 3vw, 2.25rem);
-}
-
-.brand p,
-.address,
-.navigation {
+.linkList,
+.socials {
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.brand p:first-child,
-.navigation a {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-}
-
-.brand p + p {
-  max-width: 21rem;
-  margin-top: 1rem;
-  color: color-mix(in srgb, var(--inverse-text) 72%, transparent);
-}
-
-.address,
-.navigation {
+.linkList {
   display: grid;
-  align-content: start;
-  gap: 0.5rem;
+  gap: 0.1rem;
+  text-align: center;
+}
+
+.linkList a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(0.8rem, 1vw, 1.15rem);
+  letter-spacing: 0.035em;
+}
+
+.footer a {
+  transition: color var(--ease);
+}
+
+.footer a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.footer a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.contactLinks {
+  display: grid;
+  gap: 0.4rem;
   font-style: normal;
 }
 
-.footer small {
-  grid-column: 1 / -1;
-  padding-top: 2rem;
-  color: color-mix(in srgb, var(--inverse-text) 65%, transparent);
-  border-top: 1px solid color-mix(in srgb, var(--inverse-text) 22%, transparent);
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
+.contactLinks a {
+  display: flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: clamp(0.65rem, 0.8vw, 0.95rem);
+  letter-spacing: 0;
 }
 
-@media (max-width: 44rem) {
-  .footer {
-    grid-template-columns: 1fr;
+.contactLinks span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.icon {
+  flex: 0 0 auto;
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.1rem;
+  margin-top: 1.15rem;
+}
+
+.socialIcon {
+  display: inline-flex;
+  width: 2.75rem;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialIcon .icon {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+.locations {
+  grid-column: 1 / -1;
+}
+
+.locationsHeading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin: 0 0 1.65rem;
+  font-size: clamp(0.75rem, 0.95vw, 1.05rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.locationsHeading::before,
+.locationsHeading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.locationsHeading::before {
+  margin-right: 0.5rem;
+}
+
+.locationsHeading::after {
+  margin-left: 0.5rem;
+}
+
+.locationGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  text-align: center;
+}
+
+.locationGrid address {
+  min-width: 0;
+  font-style: normal;
+}
+
+.locationGrid h3 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(0.65rem, 0.85vw, 0.95rem);
+  font-weight: 400;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+}
+
+.locationGrid p {
+  margin: 0;
+  font-size: clamp(0.65rem, 0.75vw, 0.85rem);
+  letter-spacing: 0;
+  line-height: 1.8;
+}
+
+.copyright {
+  padding: 1.5rem clamp(1.5rem, 2.6vw, 3.5rem) 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.copyright small {
+  font-size: 0.7rem;
+  letter-spacing: 0;
+}
+
+@container (max-width: 68rem) {
+  .main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
   }
 
-  .footer small {
-    grid-column: auto;
+  .brand {
+    padding-bottom: 0;
   }
 
-  .compactFooter {
-    grid-template-columns: 1fr auto;
+  .contactLinks a {
+    font-size: 0.75rem;
+  }
+}
+
+@container (max-width: 40rem) {
+  .main {
+    padding-top: 3rem;
   }
 
-  .compactFooter small {
-    display: none;
+  .details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 1.25rem;
+  }
+
+  .contact {
+    grid-column: 1 / -1;
+  }
+
+  .heading {
+    margin-bottom: 1rem;
+  }
+
+  .linkList a {
+    font-size: 0.85rem;
+  }
+
+  .contactLinks a {
+    font-size: 0.8rem;
+  }
+
+  .locationGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .locationGrid h3 {
+    font-size: 0.75rem;
+  }
+
+  .locationGrid p {
+    font-size: 0.75rem;
+  }
+
+  .copyright {
+    text-align: center;
   }
 }

@@ -1,7 +1,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--card-min)), 1fr));
-  gap: var(--grid-gap);
+  gap: var(--media-gap, var(--grid-gap));
 }
 
 .card {
@@ -9,6 +9,8 @@
 }
 
 .media {
+  width: var(--media-scale, 100%);
+  margin-inline: auto;
   overflow: hidden;
   background: #ece9e3;
 }
@@ -33,16 +35,10 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--ease);
 }
 
 .link {
   display: block;
-}
-
-.link:hover img,
-.link:focus-visible img {
-  transform: scale(1.02);
 }
 
 .title {
@@ -72,7 +68,7 @@
   line-height: 1.55;
 }
 
-@media (min-width: 48rem) {
+@container (min-width: 48rem) {
   .reference {
     grid-template-columns: repeat(var(--reference-columns), minmax(0, 1fr));
   }

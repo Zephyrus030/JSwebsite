@@ -9,6 +9,7 @@ export function MediaGrid({
   referenceCount,
   cardTestId,
   gridTestId,
+  style,
 }) {
   const usesReferenceLayout = (
     Number.isInteger(referenceColumns)
@@ -25,16 +26,17 @@ export function MediaGrid({
       style={{
         '--card-min': minCardWidth,
         '--reference-columns': usesReferenceLayout ? referenceColumns : undefined,
+        ...style,
       }}
     >
-      {items.map((item) => {
+      {items.map((item, index) => {
         const content = (
           <>
             <div
               className={`${styles.media} ${styles[item.ratio]}`}
               data-ratio={item.ratio}
             >
-              <img src={item.src} alt={item.alt} loading="lazy" />
+              <img alt={item.alt} loading="lazy" src={item.src} />
             </div>
             {item.meta && <p className={styles.meta}>{item.meta}</p>}
             {item.title && <h3 className={styles.title}>{item.title}</h3>}
@@ -45,10 +47,12 @@ export function MediaGrid({
         return (
           <article
             className={styles.card}
+            data-reveal-item="card"
             data-testid={cardTestId}
             key={`${item.src}-${item.title ?? ''}`}
             style={{
               '--reference-span': usesReferenceLayout ? (item.referenceSpan ?? 1) : undefined,
+              '--reveal-delay': `${Math.min(index, 6) * 45}ms`,
             }}
           >
             {item.href ? (
